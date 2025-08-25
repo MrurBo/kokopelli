@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+<article class="product">
+  <figure class="product-media">
+    <img src="{{ page.image | default: 'https://picsum.photos/seed/' | append: page.slug | append: '/1600/1200' }}" alt="{{ page.title }}">
+  </figure>
+
+  <div class="product-body">
+    <h1 class="product-title">{{ page.title }}</h1>
+
+    <div class="product-meta">
+      <span class="badge">{{ page.category | capitalize }}</span>
+      {% if page.price %}<span class="price">€{{ page.price }}</span>{% endif %}
+    </div>
+
+    {% if page.short %}<p class="lead">{{ page.short }}</p>{% endif %}
+    <div class="content">
+      {{ content }}
+    </div>
+
+    {% if page.tags %}
+      <ul class="tags">
+        {% for t in page.tags %}
+          <li>{{ t }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <div class="product-actions">
+      {% assign wa = 'https://wa.me/' | append: site.whatsapp_e164 | append: '?text=' | append: 'Hi! I am interested in ' | append: page.title | uri_escape %}
+      <a class="cta" href="{{ wa }}" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="cta" href="{{ site.instagram_url }}" target="_blank" rel="noopener">Instagram</a>
+      <a class="cta" href="{{ page.etsy | default: site.etsy_url }}" target="_blank" rel="noopener">Etsy</a>
+    </div>
+
+    <p class="back">
+      <a href="{{ '/' | relative_url }}">← Back to products</a>
+    </p>
+  </div>
+</article>

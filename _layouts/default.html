@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ page.title }} · {{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  <meta property="og:title" content="{{ page.title }} · {{ site.title }}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ page.image | default: '/assets/og-placeholder.jpg' | relative_url }}">
+</head>
+<body>
+  <nav class="topbar">
+    <a class="brand" href="{{ '/' | relative_url }}">Kokopelli</a>
+    <div class="spacer"></div>
+    <div class="links">
+      <a class="cta" href="https://wa.me/{{ site.whatsapp_e164 }}" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="cta" href="{{ site.instagram_url }}" target="_blank" rel="noopener">Instagram</a>
+      <a class="cta" href="{{ site.etsy_url }}" target="_blank" rel="noopener">Etsy</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    {{ content }}
+  </div>
+
+  <footer class="footer">
+    <small>© <span id="year"></span> Kokopelli • Dublin, IE</small>
+  </footer>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body>
+</html>

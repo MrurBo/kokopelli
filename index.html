@@ -1,0 +1,42 @@
+---
+layout: default
+title: Home
+---
+
+<header class="hero">
+  <h1>Kokopelli • Plant Medicine</h1>
+  <p>Browse blends and tools. Click to read details. Message to purchase.</p>
+
+  <div class="filters">
+    <input id="q" type="search" placeholder="Search…" aria-label="Search" />
+    <div class="chips">
+      <button class="chip is-active" data-cat="all">All</button>
+      <button class="chip" data-cat="rape">Rapé</button>
+      <button class="chip" data-cat="snuff">Snuff</button>
+      <button class="chip" data-cat="incense">Incense</button>
+      <button class="chip" data-cat="tools">Tools</button>
+    </div>
+  </div>
+</header>
+
+<main class="stack" id="list" aria-live="polite">
+  {% assign items = site.products | sort: 'order' %}
+  {% for p in items %}
+    <article class="row" data-cat="{{ p.category | downcase }}">
+      <a class="thumb" href="{{ p.url | relative_url }}">
+        <img loading="lazy" src="{{ p.image | default: 'https://picsum.photos/seed/' | append: p.slug | append: '/1200/900' }}" alt="{{ p.title }}">
+      </a>
+      <div class="body">
+        <h2 class="title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+        <p class="desc">{{ p.excerpt | default: p.short | default: p.description }}</p>
+        <div class="meta">
+          <span class="badge">{{ p.category | capitalize }}</span>
+          {% if p.price %}<span class="price">€{{ p.price }}</span>{% endif %}
+        </div>
+        <a class="btn" href="{{ p.url | relative_url }}">View details</a>
+      </div>
+    </article>
+  {% endfor %}
+</main>
+
+<script src="{{ '/assets/app.js' | relative_url }}" defer></script>

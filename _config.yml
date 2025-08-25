@@ -1,0 +1,25 @@
+title: Kokopelli • Plant Medicine
+description: Small-batch plant medicines. Message to purchase.
+url: https://mrurbo.github.io
+baseurl: /kokopelli   # "" if using custom domain at root
+markdown: kramdown
+theme: null
+
+# contact
+whatsapp_e164: "353000000000"       # change
+instagram_url: "https://instagram.com/yourhandle"
+etsy_url: "https://etsy.com/shop/YourShop"
+
+# products as a collection (no plugins)
+collections:
+  products:
+    output: true
+    permalink: /products/:name/
+
+defaults:
+  - scope: { path: "", type: "products" }
+    values: { layout: product }
+
+# build includes
+exclude:
+  - README.md
