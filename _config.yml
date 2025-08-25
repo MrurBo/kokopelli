@@ -1,6 +1,6 @@
 title: Kokopelli • Plant Medicine
 description: Small-batch plant medicines. Message to purchase.
-url: https://mrurbo.github.io
+url: "https://kokopelli.ie"
 baseurl: ""   # "" if using custom domain at root
 markdown: kramdown
 theme: null
