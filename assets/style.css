@@ -137,7 +137,7 @@ body {
   padding: 14px
 }
 
-.body a {
+.title a {
   color: var(--brand);
   text-decoration: none;
 }
