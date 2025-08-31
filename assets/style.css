@@ -65,7 +65,8 @@ body {
   border-radius: 12px;
   background: var(--brand);
   color: #fff;
-  text-decoration: none
+  text-decoration: none;
+  margin: 5px;
 }
 
 .container {
