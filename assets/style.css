@@ -50,6 +50,7 @@ body {
 }
 
 .topbar:first-of-type(a) {
+  padding: -12px -16px;
   color: var(--ink);
   text-decoration: none
 }
