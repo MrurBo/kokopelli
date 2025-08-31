@@ -25,7 +25,7 @@ title: Home
     {% unless p.path contains "template.md" %}
       <article class="row" data-cat="{{ p.category | downcase }}">
         <a class="thumb" href="{{ p.url | relative_url }}">
-          <img src="{{ "/assets/images/" | append: page.image | relative_url | default: '/assets/og-placeholder.jpg' }}" alt="{{ p.title }}">
+          <img src="{{ "/assets/images/" | append: p.image | relative_url | default: '/assets/og-placeholder.jpg' }}" alt="{{ p.title }}">
         </a>
         <div class="body">
           <h2 class="title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
