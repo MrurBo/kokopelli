@@ -42,6 +42,11 @@ body {
   letter-spacing: .4px
 }
 
+.brand a {
+  color: var(--ink);
+  text-decoration: none
+}
+
 .spacer {
   flex: 1
 }

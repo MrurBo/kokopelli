@@ -6,7 +6,7 @@ markdown: kramdown
 theme: null
 
 # contact
-whatsapp_e164: "353862717477"       # change
+whatsapp_e164: "353862717477"
 instagram_url: "https://www.instagram.com/kokopelli_plant_medicine?utm_source=qr&igsh=ZWlkM2drcGtvOTVm"
 # etsy_url: "https://etsy.com/shop/YourShop"
 
@@ -17,8 +17,18 @@ collections:
     permalink: /products/:name/
 
 defaults:
-  - scope: { path: "", type: "products" }
-    values: { layout: product }
+  - scope:
+      path: ""
+      type: "products"
+    values:
+      layout: product
+
+  # default for standalone pages (like _pages/about.md)
+  - scope:
+      path: "_pages"
+      type: "pages"
+    values:
+      layout: default
 
 # build includes
 exclude:
