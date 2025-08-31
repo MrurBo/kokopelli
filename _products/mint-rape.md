@@ -3,7 +3,7 @@ title: Mint Rapé
 order: 30
 category: rape
 price: 25
-image: mint.png
+image: mint.webp
 short: Cooling, clearing blend with a crisp mint aroma.
 tags: [rape, mint]
 ---

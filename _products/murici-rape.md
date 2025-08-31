@@ -3,7 +3,7 @@ title: Murici Rapé
 order: 30
 category: rape
 price: 25
-image: mint.png
+image: mint.webp
 short: Earthy, grounding murici-based blend.
 tags: [rape, murici]
 ---

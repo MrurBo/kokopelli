@@ -3,7 +3,7 @@ title: Medicinal Inhaler (Menthol Inhaler)
 order: 30
 category: extras
 price: 12
-image: mint.png
+image: mint.webp
 short: Pocket menthol inhaler for cool, refreshing aroma.
 tags: [extras, inhaler, menthol]
 ---
