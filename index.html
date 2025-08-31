@@ -23,11 +23,12 @@ title: Home
     {% unless p.path contains "template.md" %}
       <article class="row" data-cat="{{ p.category | downcase }}">
         <a class="thumb" href="{{ p.url | relative_url }}">
-          <img src="{{ "/assets/images/" | append: p.image | relative_url | default: '/assets/og-placeholder.jpg' }}" alt="{{ p.title }}">
+          <img src="{{ "/assets/images/" | append: p.image | relative_url | default: '/assets/og-placeholder.jpg' }}" alt="{{ p.title }}" loading="lazy" decoding="async">
         </a>
         <div class="body">
           <h2 class="title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
           <p class="desc">{{ p.excerpt | default: p.short | default: p.description }}</p>
+          <meta name="description" content="{{ p.description | strip_html | escape }}">
           <div class="meta">
             <span class="badge">{{ p.category | capitalize }}</span>
             {% if p.price %}<span class="price">€{{ p.price }}</span>{% endif %}
