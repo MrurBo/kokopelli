@@ -18,12 +18,18 @@ jobs:
   deploy:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-
     steps:
+      # ✅ Ensure we have a git repo in the workspace so git config works
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Download build artifact from previous workflow
         uses: dawidd6/action-download-artifact@v6
         with:
-          workflow: build.yml                 # or "Build Jekyll"
+          # If you ever rename build.yml, update this:
+          workflow: build.yml
           run_id: ${{ github.event.workflow_run.id }}
           name: jekyll-site
           path: _site
@@ -40,3 +46,5 @@ jobs:
           folder: _site
           clean: true
           single-commit: true
+          git-config-name: github-actions[bot]
+          git-config-email: 41898282+github-actions[bot]@users.noreply.github.com
