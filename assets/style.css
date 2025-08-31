@@ -42,7 +42,7 @@ body {
   letter-spacing: .4px
 }
 
-.brand a {
+.topbar a {
   color: var(--ink);
   text-decoration: none
 }
