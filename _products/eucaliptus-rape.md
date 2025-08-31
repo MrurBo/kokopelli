@@ -1,4 +1,3 @@
-
 ---
 title: Eucaliptus Rapé
 order: 30
