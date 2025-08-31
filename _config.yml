@@ -5,6 +5,8 @@ baseurl: ""   # "" if using custom domain at root
 markdown: kramdown
 theme: null
 
+brand_name: "Kokopelli Plant Medicine"
+
 # contact
 whatsapp_e164: "353862717477"
 instagram_url: "https://www.instagram.com/kokopelli_plant_medicine?utm_source=qr&igsh=ZWlkM2drcGtvOTVm"
