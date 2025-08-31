@@ -4,7 +4,7 @@ layout: default
 
 <article class="product">
   <figure class="product-media">
-    <img src="{{ page.image | default: '/assets/default.png' | relative_url }}" alt="{{ page.title }}">
+    <img src="{{ "/assets/images/" | append: page.image | relative_url | default: '/assets/og-placeholder.jpg' }}" alt="{{ page.title }}">
   </figure>
 
   <div class="product-body">

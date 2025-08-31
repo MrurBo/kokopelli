@@ -1,12 +1,11 @@
 ---
 title: Mint Rapé
-order: 10
+order: 30
 category: rape
-price: 18
-image: https://picsum.photos/seed/mint-rape/1600/1200
-short: Cooling blend with fresh mint over a classic ash base.
-tags: [clarity, mint, cool]
-etsy:
+price: 25
+image: mint.png
+short: Cooling, clearing blend with a crisp mint aroma.
+tags: [rape, mint]
 ---
 
-A gentle, clarifying rapé prepared in small batches. Suggested use: seated, with intention and breath awareness.
+Finely ground rapé blend for focused intention and breathwork.

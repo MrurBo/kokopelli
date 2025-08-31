@@ -22,20 +22,22 @@ title: Home
 <main class="stack" id="list" aria-live="polite">
   {% assign items = site.products | sort: 'order' %}
   {% for p in items %}
-    <article class="row" data-cat="{{ p.category | downcase }}">
-      <a class="thumb" href="{{ p.url | relative_url }}">
-        <img loading="lazy" src="{{ p.image | default: 'https://picsum.photos/seed/' | append: p.slug | append: '/1200/900' }}" alt="{{ p.title }}">
-      </a>
-      <div class="body">
-        <h2 class="title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
-        <p class="desc">{{ p.excerpt | default: p.short | default: p.description }}</p>
-        <div class="meta">
-          <span class="badge">{{ p.category | capitalize }}</span>
-          {% if p.price %}<span class="price">€{{ p.price }}</span>{% endif %}
+    {% unless p.path contains "template.md" %}
+      <article class="row" data-cat="{{ p.category | downcase }}">
+        <a class="thumb" href="{{ p.url | relative_url }}">
+          <img src="{{ "/assets/images/" | append: page.image | relative_url | default: '/assets/og-placeholder.jpg' }}" alt="{{ p.title }}">
+        </a>
+        <div class="body">
+          <h2 class="title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+          <p class="desc">{{ p.excerpt | default: p.short | default: p.description }}</p>
+          <div class="meta">
+            <span class="badge">{{ p.category | capitalize }}</span>
+            {% if p.price %}<span class="price">€{{ p.price }}</span>{% endif %}
+          </div>
+          <a class="btn" href="{{ p.url | relative_url }}">View details</a>
         </div>
-        <a class="btn" href="{{ p.url | relative_url }}">View details</a>
-      </div>
-    </article>
+      </article>
+    {% endunless %}
   {% endfor %}
 </main>
 

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
   <meta property="og:title" content="{{ page.title }} · {{ site.title }}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="{{ page.image | default: '/assets/og-placeholder.jpg' }}">
+  <meta property="og:image" content="{{ "/assets/images/" | append: page.image | relative_url | default: '/assets/og-placeholder.jpg' }}">
 </head>
 <body>
   <nav class="topbar">
