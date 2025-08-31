@@ -1,4 +1,4 @@
-<!-- _products/medicinal-inhaler.md -->
+
 ---
 title: Medicinal Inhaler (Menthol Inhaler)
 order: 30

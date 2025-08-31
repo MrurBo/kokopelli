@@ -1,4 +1,4 @@
-<!-- _products/wild-lavender-oil.md -->
+
 ---
 title: Wild Lavender Oil
 order: 30

@@ -1,4 +1,4 @@
-<!-- _products/eucaliptus-rape.md -->
+
 ---
 title: Eucaliptus Rapé
 order: 30
