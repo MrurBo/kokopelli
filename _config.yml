@@ -23,9 +23,9 @@ defaults:
     values:
       layout: product
 
-  # default for standalone pages (like _pages/about.md)
+  # default for standalone root-level pages (like about.md)
   - scope:
-      path: "_pages"
+      path: ""
       type: "pages"
     values:
       layout: default
