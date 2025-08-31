@@ -4,7 +4,7 @@ layout: default
 
 <article class="product">
   <figure class="product-media">
-    <img src="{{ page.image | default: 'https://picsum.photos/seed/' | append: page.slug | append: '/1600/1200' }}" alt="{{ page.title }}">
+    <img src="{{ page.image | default: '/assets/default.png' | relative_url }}" alt="{{ page.title }}">
   </figure>
 
   <div class="product-body">
@@ -32,7 +32,7 @@ layout: default
       {% assign wa = 'https://wa.me/' | append: site.whatsapp_e164 | append: '?text=' | append: 'Hi! I am interested in ' | append: page.title | uri_escape %}
       <a class="cta" href="{{ wa }}" target="_blank" rel="noopener">WhatsApp</a>
       <a class="cta" href="{{ site.instagram_url }}" target="_blank" rel="noopener">Instagram</a>
-      <a class="cta" href="{{ page.etsy | default: site.etsy_url }}" target="_blank" rel="noopener">Etsy</a>
+      <!-- <a class="cta" href="{{ page.etsy | default: site.etsy_url }}" target="_blank" rel="noopener">Etsy</a> -->
     </div>
 
     <p class="back">

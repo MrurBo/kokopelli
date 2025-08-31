@@ -6,9 +6,9 @@ markdown: kramdown
 theme: null
 
 # contact
-whatsapp_e164: "353000000000"       # change
-instagram_url: "https://instagram.com/yourhandle"
-etsy_url: "https://etsy.com/shop/YourShop"
+whatsapp_e164: "353862717477"       # change
+instagram_url: "https://www.instagram.com/kokopelli_plant_medicine?utm_source=qr&igsh=ZWlkM2drcGtvOTVm"
+# etsy_url: "https://etsy.com/shop/YourShop"
 
 # products as a collection (no plugins)
 collections:
