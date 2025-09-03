@@ -22,3 +22,17 @@ function filter(){
 }
 
 // Global background pan tied to page scroll
+const bandHeight = 10; // viewport percentage
+
+function updateBackgroundBand() {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const maxOffset = 100 - bandHeight; // remaining percentage the band can move
+  const progress = docHeight ? (scrollTop / docHeight) * maxOffset : 0;
+
+  document.body.style.setProperty('--clipTop', `${progress}%`);
+  document.body.style.setProperty('--clipBottom', `${maxOffset - progress}%`);
+}
+
+window.addEventListener('scroll', updateBackgroundBand, { passive: true });
+updateBackgroundBand();
