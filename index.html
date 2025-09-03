@@ -4,7 +4,10 @@ title: Home
 ---
 
 <header class="hero">
-  <h1>Kokopelli • Plant Medicine</h1>
+  <div class="background-image">
+    <img src="/assets/hero.webp" alt="Kokopelli • Plant Medicine"
+         srcset="/assets/hero.webp, /assets/hero.jpg">
+  </div>
   <p>Browse blends and oils. Click to read details. Message to purchase.</p>
 
   <div class="filters">
@@ -20,7 +23,7 @@ title: Home
 <main class="stack" id="list" aria-live="polite">
   {% assign items = site.products | sort: 'order' %}
   {% for p in items %}
-    {% unless p.path contains "template.md" %}
+    {% unless p.path contains "/_" %}
       <article class="row" data-cat="{{ p.category | downcase }}">
         <a class="thumb" href="{{ p.url | relative_url }}">
           <img src="{{ "/assets/images/" | append: p.image | relative_url | default: '/assets/og-placeholder.jpg' }}" alt="{{ p.title }}" loading="lazy" decoding="async">

@@ -20,3 +20,5 @@ function filter(){
     row.style.display = (inCat && inText) ? '' : 'none';
   });
 }
+
+// Global background pan tied to page scroll

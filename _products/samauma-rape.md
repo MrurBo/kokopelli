@@ -8,4 +8,4 @@ short: Light, airy blend associated with open, spacious breath.
 tags: [rape, samauma]
 ---
 
-An airy, uplifting rapé often chosen for clarity and spacious awareness.
+Sacred Amazonian snuff for grounding, chakra alignment, and spiritual connection. Opens the crown chakra and invites ancestral wisdom.

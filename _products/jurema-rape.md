@@ -8,4 +8,4 @@ short: Foresty, centering notes for quiet focus.
 tags: [rape, jurema]
 ---
 
-A balanced woodland profile intended for centering and reflective practice.
+Sacred snuff from Mimosa tenuiflora for emotional healing, intuition, and spiritual insight. Activates the heart, third eye, and enhances dreamwork.

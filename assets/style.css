@@ -21,7 +21,22 @@ body {
 body {
   font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial;
   color: var(--ink);
-  background: var(--bg)
+  background: var(--bg);
+}
+
+/* Fixed background image, revealed as a 10% vertical band that slides with scroll */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url('/assets/hero.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
+  /* Clip to a moving window: top and bottom are driven by CSS vars */
+  clip-path: inset(var(--clipTop, 0%) 0 var(--clipBottom, 90%) 0);
 }
 
 .topbar {
@@ -74,10 +89,51 @@ body {
   margin: 0 auto;
   padding: 18px
 }
-
 .hero {
-  padding: 8px 0 14px
+  position: relative;
+  min-height: 100vh;          /* image is viewport-sized */
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 2rem;
+  color: #fff;
+  overflow: hidden;
 }
+
+.hero .background-image {
+  display: none;
+}
+
+.hero .background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* This is what we animate with JS: 0% (top) → 100% (bottom) */
+  object-position: 50% var(--heroY, 0%);
+  will-change: object-position;
+}
+
+/* Optional: a subtle overlay for text contrast */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero .background-image img { object-position: 50% 50%; }
+  /* Keep the band centered and static */
+  body { --clipTop: 45%; --clipBottom: 45%; }
+}
+
+.hero .background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* fill area, crop nicely */
+}
+
 
 .hero h1 {
   margin: 0 0 6px
@@ -250,4 +306,9 @@ body {
 
 .back a {
   text-decoration: none
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  body { background-position: 50% 50%; }
 }

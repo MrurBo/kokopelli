@@ -8,4 +8,4 @@ short: Fresh eucalyptus profile for crisp clarity.
 tags: [rape, eucalyptus]
 ---
 
-Clean, refreshing notes intended to clear the head and support focus.
+Refreshing snuff blending tobacco and eucalyptus for grounding, clarity, and energy cleansing. Supports breath, focus, and spiritual renewal.
