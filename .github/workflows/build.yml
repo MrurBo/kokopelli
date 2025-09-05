@@ -19,6 +19,7 @@ jobs:
 
       - name: Bundle install
         run: |
+          mkdir -p vendor/bundle
           bundle config set path 'vendor/bundle'
           bundle install --jobs 4 --retry 3
         env:
