@@ -44,7 +44,6 @@ exclude:
   - .vscode/
   - .DS_Store
   - Thumbs.db
-  - GemFile.lock
   - CNAME
   - LICENSE
   - .jekyll-cache/
@@ -52,7 +51,6 @@ exclude:
   - .bundle/
   - Makefile
   - Gulpfile.js
-  - GemFile
   - assets/
 
 # Preserve files/folders in the destination directory when Jekyll cleans it
