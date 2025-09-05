@@ -4,7 +4,8 @@ _site/
 .jekyll-cache/
 .bundle/
 vendor/
-GemFile.lock
 node_modules/
 .DS_Store
 Thumbs.db
+Gemfile.lock
+.jekyll-metadata
