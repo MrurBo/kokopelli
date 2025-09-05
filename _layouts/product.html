@@ -3,12 +3,13 @@ layout: default
 ---
 
 <article class="product">
+  <h1 class="product-title">{{ page.title }}</h1>
+  <!-- <div class="break"></div> -->
   <figure class="product-media">
     <img src="{{ "/assets/images/" | append: page.image | relative_url | default: '/assets/og-placeholder.jpg' }}" alt="{{ page.title }}">
   </figure>
 
   <div class="product-body">
-    <h1 class="product-title">{{ page.title }}</h1>
 
     <div class="product-meta">
       <span class="badge">{{ page.category | capitalize }}</span>
@@ -36,7 +37,7 @@ layout: default
     </div>
 
     <p class="back">
-      <a href="{{ '/' | relative_url }}">← Back to products</a>
+      <a class="cta" href="{{ '/' | relative_url }}">← Back to products</a>
     </p>
   </div>
 </article>

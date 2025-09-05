@@ -1,0 +1,21 @@
+{
+  "name": "kokopelli-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kokopelli Jekyll site with Gulp pipeline",
+  "scripts": {
+    "build": "gulp build",
+    "serve": "gulp serve",
+    "gulp": "gulp",
+    "watch": "gulp watch"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "concurrently": "^9.0.1",
+    "browser-sync": "^2.29.3",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-terser": "^2.1.0",
+    "del": "^6.1.1"
+  }
+}

@@ -4,39 +4,57 @@ title: Home
 ---
 
 <header class="hero">
-  <p>Browse blends and oils. Click to read details. Message to purchase.</p>
-
-  <div class="filters">
-    <input id="q" type="search" placeholder="Search…" aria-label="Search" />
-    <div class="chips">
-      <button class="chip is-active" data-cat="all">All</button>
-      <button class="chip" data-cat="rape">Rapé</button>
-      <button class="chip" data-cat="extras">Extras</button>
+  <!-- Hero carousel -->
+  <h1>Kokopelli Plant Medicine</h1>
+  <div class="break"></div>
+  <div class="hero-carousel" aria-roledescription="carousel">
+    <div class="slides" id="heroSlides">
+      <!-- Slide backgrounds built from products -->
+      {% assign items = site.products | sort: 'order' %}
+      {% for p in items %}
+        {% unless p.path contains "/_" %}
+          <a class="slide" href="{{ p.url | relative_url }}" data-src="{{ "/assets/images/" | append: p.image | relative_url | default: '/assets/og-placeholder.jpg' }}" data-title="{{ p.title | escape }}" data-desc="{{ p.excerpt | default: p.short | default: p.description | strip_html | strip_newlines | escape }}" aria-hidden="true" aria-label="{{ p.title }} - {{ p.excerpt | default: p.short | default: p.description | strip_html | strip_newlines }}">
+            <div class="slide-caption">
+              <h3 class="slide-title">{{ p.title }}</h3>
+              <p class="slide-sub">{{ p.excerpt | default: p.short | default: p.description | strip_html }}</p>
+            </div>
+          </a>
+        {% endunless %}
+      {% endfor %}
     </div>
+    <button class="carousel-control prev" aria-label="Previous slide">‹</button>
+    <button class="carousel-control next" aria-label="Next slide">›</button>
+    <div class="carousel-dots" id="heroDots" role="tablist"></div>
   </div>
+
+  <!-- Centered title card over the carousel -->
+  <!-- <div class="hero-card" role="region" aria-label="Hero">
+    <h1 class="hero-title">{{ site.title | default: "Kokopelli" }}</h1>
+    <p class="hero-sub">Browse blends &amp; oils — click a product to read details; message to purchase.</p>
+
+    <div class="filters">
+      <input id="q" type="search" placeholder="Search…" aria-label="Search" />
+      <div class="chips">
+        <button class="chip is-active" data-cat="all">All</button>
+        <button class="chip" data-cat="rape">Rapé</button>
+        <button class="chip" data-cat="extras">Extras</button>
+      </div>
+    </div>
+  </div> -->
 </header>
 
+<div class="break"></div>
+
 <main class="stack" id="list" aria-live="polite">
-  {% assign items = site.products | sort: 'order' %}
-  {% for p in items %}
-    {% unless p.path contains "/_" %}
-      <article class="row" data-cat="{{ p.category | downcase }}">
-        <a class="thumb" href="{{ p.url | relative_url }}">
-          <img src="{{ "/assets/images/" | append: p.image | relative_url | default: '/assets/og-placeholder.jpg' }}" alt="{{ p.title }}" loading="lazy" decoding="async">
-        </a>
-        <div class="body">
-          <h2 class="title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
-          <p class="desc">{{ p.excerpt | default: p.short | default: p.description }}</p>
-          <meta name="description" content="{{ p.description | strip_html | escape }}">
-          <div class="meta">
-            <span class="badge">{{ p.category | capitalize }}</span>
-            {% if p.price %}<span class="price">€{{ p.price }}</span>{% endif %}
-          </div>
-          <a class="btn" href="{{ p.url | relative_url }}">View details</a>
-        </div>
-      </article>
-    {% endunless %}
-  {% endfor %}
+
 </main>
+
+{%- comment -%} Append About page content at the bottom {%- endcomment -%}
+{%- assign about_page = site.pages | where: "permalink", "/about/" | first -%}
+{%- if about_page -%}
+  <section id="about-home">
+    {{ about_page.content }}
+  </section>
+{%- endif -%}
 
 <script src="{{ '/assets/app.js' | relative_url }}" defer></script>

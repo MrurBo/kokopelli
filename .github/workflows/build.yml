@@ -12,12 +12,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build with jekyll/builder
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+
+      - name: Bundle install
         run: |
-          docker run \
-            -v ${{ github.workspace }}:/srv/jekyll \
-            -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-            jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+          bundle config set path 'vendor/bundle'
+          bundle install --jobs 4 --retry 3
+        env:
+          BUNDLE_GEMFILE: Gemfile
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Node deps
+        run: npm ci
+
+      - name: Gulp build (Jekyll + assets)
+        run: npm run build
+        env:
+          BUNDLE_GEMFILE: Gemfile
+          JEKYLL_ENV: production
 
       - name: Upload built site
         uses: actions/upload-artifact@v4

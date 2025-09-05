@@ -5,7 +5,7 @@ baseurl: ""   # "" if using custom domain at root
 markdown: kramdown
 theme: null
 
-brand_name: "Kokopelli Plant Medicine"
+brand_name: "Kokopelli.ie"
 
 # contact
 whatsapp_e164: "353862717477"
@@ -35,3 +35,27 @@ defaults:
 # build includes
 exclude:
   - README.md
+  - assets/css/
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - .github/
+  - .gitignore
+  - .vscode/
+  - .DS_Store
+  - Thumbs.db
+  - GemFile.lock
+  - CNAME
+  - LICENSE
+  - .jekyll-cache/
+  - vendor/
+  - .bundle/
+  - Makefile
+  - Gulpfile.js
+  - GemFile
+  - assets/
+
+# Preserve files/folders in the destination directory when Jekyll cleans it
+# This prevents our Gulp-written assets from being deleted on each rebuild
+keep_files:
+  - assets

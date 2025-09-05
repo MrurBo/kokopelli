@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+# Note: Assets are handled by Gulp (see package.json/Gulpfile.js)
+
 gem "jekyll", "~> 4.3.4"
 
 # Stdlib gems externalized in Ruby 3.4+
@@ -21,3 +23,4 @@ gem "webrick", "~> 1.8" # needed for `jekyll serve` on Ruby 3+
 
 # Windows time zone data
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+

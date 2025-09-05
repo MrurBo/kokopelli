@@ -5,3 +5,6 @@ _site/
 .bundle/
 vendor/
 GemFile.lock
+node_modules/
+.DS_Store
+Thumbs.db
