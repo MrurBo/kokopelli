@@ -31,8 +31,8 @@ layout: default
 
     <div class="product-actions">
       {% assign wa = 'https://wa.me/' | append: site.whatsapp_e164 | append: '?text=' | append: 'Hi! I am interested in ' | append: page.title | uri_escape %}
-      <a class="cta" href="{{ wa }}" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="cta" href="{{ site.instagram_url }}" target="_blank" rel="noopener">Instagram</a>
+      <a class="cta" id="whatsapp-link" href="{{ wa }}" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="cta" id="instagram-link" href="{{ site.instagram_url }}" target="_blank" rel="noopener">Instagram</a>
       <!-- <a class="cta" href="{{ page.etsy | default: site.etsy_url }}" target="_blank" rel="noopener">Etsy</a> -->
     </div>
 
