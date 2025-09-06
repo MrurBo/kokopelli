@@ -35,6 +35,7 @@ function filter(){
   let current = 0;
   let timer = null;
   const interval = 5000;
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // lazy-load slide backgrounds from data-src
   slideEls.forEach((s, i) => {
@@ -43,7 +44,10 @@ function filter(){
     const btn = document.createElement('button');
     btn.setAttribute('aria-label', `Go to slide ${i+1}`);
     btn.setAttribute('role', 'tab');
-    btn.className = i === 0 ? 'is-active' : '';
+    const isActive = i === 0;
+    btn.className = isActive ? 'is-active' : '';
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    btn.tabIndex = isActive ? 0 : -1;
     btn.addEventListener('click', (e) => { e.stopPropagation(); goto(i); });
     dotsEl.appendChild(btn);
   });
@@ -53,7 +57,12 @@ function filter(){
       s.classList.toggle('is-active', idx === i);
       s.setAttribute('aria-hidden', idx === i ? 'false' : 'true');
     });
-    Array.from(dotsEl.children).forEach((d, idx)=> d.classList.toggle('is-active', idx === i));
+    Array.from(dotsEl.children).forEach((d, idx)=> {
+      const active = idx === i;
+      d.classList.toggle('is-active', active);
+      d.setAttribute('aria-selected', active ? 'true' : 'false');
+      d.tabIndex = active ? 0 : -1;
+    });
     current = i;
   }
 
@@ -68,12 +77,29 @@ function filter(){
   prevBtn.addEventListener('click', (e)=>{ e.stopPropagation(); prev(); });
   nextBtn.addEventListener('click', (e)=>{ e.stopPropagation(); next(); });
 
-  carousel.addEventListener('mouseenter', ()=> clearInterval(timer));
-  carousel.addEventListener('mouseleave', resetTimer);
+  // keyboard support for dots
+  dotsEl.addEventListener('keydown', (e) => {
+    const keys = ['ArrowLeft', 'ArrowRight', 'Home', 'End'];
+    if (!keys.includes(e.key)) return;
+    e.preventDefault();
+    const dots = Array.from(dotsEl.children);
+    let idx = current;
+    if (e.key === 'ArrowLeft') idx = (current - 1 + dots.length) % dots.length;
+    if (e.key === 'ArrowRight') idx = (current + 1) % dots.length;
+    if (e.key === 'Home') idx = 0;
+    if (e.key === 'End') idx = dots.length - 1;
+    goto(idx);
+    dots[idx].focus();
+  });
+
+  if (!reduceMotion) {
+    carousel.addEventListener('mouseenter', ()=> clearInterval(timer));
+    carousel.addEventListener('mouseleave', resetTimer);
+  }
 
   function resetTimer(){
     clearInterval(timer);
-    timer = setInterval(next, interval);
+    if (!reduceMotion) timer = setInterval(next, interval);
   }
 
   // start

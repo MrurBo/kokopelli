@@ -14,12 +14,17 @@
   <meta property="og:type" content="website">
   <meta property="og:image"
     content="{{ "/assets/images/" | append: page.image | relative_url | default: '/assets/hero.webp' }}">
+  {% if page.keywords %}
+  <meta name="keywords" content="{% if page.keywords.size %}{{ page.keywords | join: ', ' }}{% else %}{{ page.keywords }}{% endif %}">
+  {% endif %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KP42Y69SS"></script>
 </head>
-<script src="https://instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+<script src="https://instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z" defer></script>
 <body>
-  <nav class="topbar">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <nav class="topbar" role="navigation" aria-label="Primary">
     <a class="brand" href="{{ '/' | relative_url }}">
-      <img src="{{ '/assets/logo.webp' | relative_url }}" alt="Kokopelli" class="logo" width="64" height="64"
+      <img src="{{ '/assets/logo.webp' | relative_url }}" alt="" aria-hidden="true" class="logo" width="64" height="64"
         decoding="async" loading="eager" />
       <span>{{ site.brand_name }}</span>
     </a>
@@ -33,11 +38,11 @@
 
 
 
-  <div class="container">
+  <main id="main" class="container" tabindex="-1">
     {{ content }}
-  </div>
+  </main>
   <div class="break"></div>
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="footer-bg">
 
       <small>© <span id="year"></span> Kokopelli • Dublin, IE</small>

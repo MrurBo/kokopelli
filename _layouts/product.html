@@ -6,7 +6,7 @@ layout: default
   <h1 class="product-title">{{ page.title }}</h1>
   <!-- <div class="break"></div> -->
   <figure class="product-media">
-    <img src="{{ "/assets/images/" | append: page.image | relative_url | default: '/assets/og-placeholder.jpg' }}" alt="{{ page.title }}">
+    <img src="{{ "/assets/images/" | append: page.image | relative_url | default: '/assets/og-placeholder.jpg' }}" alt="{{ page.title }}" loading="lazy" decoding="async">
   </figure>
 
   <div class="product-body">

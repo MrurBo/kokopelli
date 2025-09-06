@@ -6,6 +6,10 @@ price: 12
 image: 7h.png
 short: Purifying herbal blend for space clearing.
 tags: [purification, smoke]
+description: One-sentence meta description using key search terms.
+keywords:
+  - example keyword
+  - another keyword
 ---
 
 Light for cleansing spaces and intention setting.

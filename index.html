@@ -7,7 +7,7 @@ title: Home
   <!-- Hero carousel -->
   <h1>Kokopelli Plant Medicine</h1>
   <div class="break"></div>
-  <div class="hero-carousel" aria-roledescription="carousel">
+  <div class="hero-carousel" aria-roledescription="carousel" role="region" aria-label="Featured products carousel">
     <div class="slides" id="heroSlides">
       <!-- Slide backgrounds built from products -->
       {% assign items = site.products | sort: 'order' %}
@@ -15,7 +15,7 @@ title: Home
         {% unless p.path contains "/_" %}
           <a class="slide" href="{{ p.url | relative_url }}" data-src="{{ "/assets/images/" | append: p.image | relative_url | default: '/assets/og-placeholder.jpg' }}" data-title="{{ p.title | escape }}" data-desc="{{ p.excerpt | default: p.short | default: p.description | strip_html | strip_newlines | escape }}" aria-hidden="true" aria-label="{{ p.title }} - {{ p.excerpt | default: p.short | default: p.description | strip_html | strip_newlines }}">
             <div class="slide-caption">
-              <h3 class="slide-title">{{ p.title }}</h3>
+              <h2 class="slide-title">{{ p.title }}</h2>
               <p class="slide-sub">{{ p.excerpt | default: p.short | default: p.description | strip_html }}</p>
             </div>
           </a>
@@ -26,7 +26,7 @@ title: Home
     <button class="carousel-control next" aria-label="Next slide">›</button>
     <div class="carousel-dots" id="heroDots" role="tablist"></div>
   </div>
-
+  <h2>Browse Blends</h2>
   <!-- Centered title card over the carousel -->
   <!-- <div class="hero-card" role="region" aria-label="Hero">
     <h1 class="hero-title">{{ site.title | default: "Kokopelli" }}</h1>
@@ -45,9 +45,9 @@ title: Home
 
 <div class="break"></div>
 
-<main class="stack" id="list" aria-live="polite">
+<section class="stack" id="list" aria-live="polite">
 
-</main>
+</section>
 
 {%- comment -%} Append About page content at the bottom {%- endcomment -%}
 {%- assign about_page = site.pages | where: "permalink", "/about/" | first -%}
