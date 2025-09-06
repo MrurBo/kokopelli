@@ -15,11 +15,25 @@
   <meta property="og:image"
     content="{{ "/assets/images/" | append: page.image | relative_url | default: '/assets/hero.webp' }}">
   {% if page.keywords %}
-  <meta name="keywords" content="{% if page.keywords.size %}{{ page.keywords | join: ', ' }}{% else %}{{ page.keywords }}{% endif %}">
+  <meta name="keywords"
+    content="{% if page.keywords.size %}{{ page.keywords | join: ', ' }}{% else %}{{ page.keywords }}{% endif %}">
   {% endif %}
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KP42Y69SS"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KP42Y69SS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-3KP42Y69SS');
+  </script>
 </head>
-<script src="https://instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z" defer></script>
+<script src="https://instant.page/5.2.0" type="module"
+  integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z" defer></script>
+
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <nav class="topbar" role="navigation" aria-label="Primary">
@@ -31,7 +45,8 @@
     <div class="spacer"></div>
     <div class="links">
       <!-- <a class="cta" href="{{ '/about/' | relative_url }}">About</a> -->
-      <a class="cta" href="https://wa.me/{{ site.whatsapp_e164 }}" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+      <a class="cta" href="https://wa.me/{{ site.whatsapp_e164 }}" target="_blank" rel="noopener"
+        aria-label="WhatsApp">WhatsApp</a>
       <a class="cta" href="{{ site.instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
     </div>
   </nav>
