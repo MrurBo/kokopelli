@@ -55,5 +55,6 @@ exclude:
 
 # Preserve files/folders in the destination directory when Jekyll cleans it
 # This prevents our Gulp-written assets from being deleted on each rebuild
+
 keep_files:
   - assets
