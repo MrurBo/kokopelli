@@ -1,7 +1,7 @@
 ---
 title: Wild Lavender Oil
 order: 30
-category: extras
+category: lavender-oil
 price: 12
 image: mint.webp
 short: Wildcrafted lavender aroma for diffuser or blend.

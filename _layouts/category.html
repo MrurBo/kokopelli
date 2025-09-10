@@ -1,0 +1,28 @@
+---
+layout: default
+---
+    
+<!-- extract slug for the current category-->
+{% assign category = page.url | split: '/' | last | slugify %}
+<div class="category-products">
+  {% for product in site.products %}
+    {% if product.category == category %}
+      <a href="{{ product.url }}" class="product-card">
+        {% if product.image %}
+          <img src="{{ "/assets/images/" | append: product.image | relative_url | default: '/assets/og-placeholder.jpg' }}" alt="{{ product.title }}" class="product-card-img" loading="lazy" decoding="async">
+        {% endif %}
+        <div class="product-card-body">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+            <h2 class="product-card-title" style="margin-bottom: 0;">{{ product.title }}</h2>
+            {% if product.short %}
+              <span class="product-card-short">{{ product.short }}</span>
+            {% endif %}
+          </div>
+          {% if product.price %}
+            <div class="product-card-price">€{{ product.price }}</div>
+          {% endif %}
+        </div>
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>

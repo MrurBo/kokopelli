@@ -31,7 +31,7 @@ function filter(){
   const slideEls = Array.from(carousel.querySelectorAll('.slide'));
   const prevBtn = carousel.querySelector('.carousel-control.prev');
   const nextBtn = carousel.querySelector('.carousel-control.next');
-  const dotsEl = carousel.querySelector('.carousel-dots');
+  const dotsEl = carousel.querySelector('#heroDots');
   let current = 0;
   let timer = null;
   const interval = 5000;

@@ -5,6 +5,8 @@ const browserSync = require("browser-sync").create("jekyll");
 const cleanCSS = require("gulp-clean-css");
 const terser = require("gulp-terser");
 const del = require("del");
+const fs = require("fs");
+const path = require("path");
 // Example passthrough task (kept simple; extend as needed)
 // Development asset tasks (no minification)
 function stylesDev() {
@@ -21,11 +23,9 @@ function scriptsDev() {
 
 // Copy all other assets (images/fonts/etc.) preserving structure
 function staticDev() {
-    return src([
-        "assets/**/*",
-        "!assets/css{,/**}",
-        "!assets/**/*.js",
-    ], { allowEmpty: true })
+    return src(["assets/**/*", "!assets/css{,/**}", "!assets/**/*.js"], {
+        allowEmpty: true,
+    })
         .pipe(dest("_site/assets"))
         .pipe(browserSync.stream());
 }
@@ -44,12 +44,9 @@ function scriptsProd() {
 }
 
 function staticProd() {
-    return src([
-        "assets/**/*",
-        "!assets/css{,/**}",
-        "!assets/**/*.js",
-    ], { allowEmpty: true })
-        .pipe(dest("_site/assets"));
+    return src(["assets/**/*", "!assets/css{,/**}", "!assets/**/*.js"], {
+        allowEmpty: true,
+    }).pipe(dest("_site/assets"));
 }
 
 function assetsDev(done) {
@@ -73,11 +70,7 @@ function watchAssets() {
     // Rebuild on CSS/JS changes; extend globs as needed
     watch(["assets/css/**/*.css"], stylesDev);
     watch(["assets/**/*.js"], scriptsDev);
-    watch([
-        "assets/**/*",
-        "!assets/css{,/**}",
-        "!assets/**/*.js",
-    ], staticDev);
+    watch(["assets/**/*", "!assets/css{,/**}", "!assets/**/*.js"], staticDev);
 }
 
 // Jekyll helpers
@@ -93,7 +86,7 @@ function jekyllWatch(done) {
 }
 
 function jekyllBuild(done) {
-    const args = ["exec", "jekyll", "build"];
+    const args = ["exec", "jekyll", "build", "--trace"];
     const child = spawn("bundle", args, {
         stdio: "inherit",
         shell: process.platform === "win32",
@@ -102,14 +95,26 @@ function jekyllBuild(done) {
         done(code ? new Error(`jekyll build exited with ${code}`) : undefined)
     );
 }
-
 function bsServe(done) {
-    browserSync.init({
-        server: { baseDir: "_site" },
-        open: false,
-        notify: false,
-        ghostMode: false,
-    });
+    // When the file generates, it should be available immediately
+
+    const content_404 = fs.readFileSync(path.join("_site", "404.html"));
+    browserSync.init(
+        {
+            server: { baseDir: "_site" },
+            open: false,
+            notify: false,
+            ghostMode: false,
+            port: 80,
+        },
+        (err, bs) => {
+            bs.addMiddleware("*", (req, res) => {
+                // Provides the 404 content without redirect.
+                res.write(content_404);
+                res.end();
+            });
+        }
+    );
     // Reload when Jekyll writes files
     watch(["_site/**/*", "!_site/assets/**/*"]).on(
         "change",
@@ -120,4 +125,5 @@ function bsServe(done) {
 
 exports.watch = series(assetsDev, watchAssets);
 exports.serve = parallel(jekyllWatch, bsServe, series(assetsDev, watchAssets));
+exports.clean = () => del(["_site"]);
 exports.default = exports.build;

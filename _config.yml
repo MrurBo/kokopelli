@@ -1,41 +1,43 @@
-title: Kokopelli • Plant Medicine
-description: Small-batch plant medicines. Message to purchase.
+title: "Kokopelli • Plant Medicine"
+description: "Small-batch plant medicines. Message to purchase."
 url: "https://kokopelli.ie"
-baseurl: ""   # "" if using custom domain at root
+baseurl: ""
 markdown: kramdown
 theme: null
 
 brand_name: "Kokopelli.ie"
 
-# contact
+# Contact
 whatsapp_e164: "353862717477"
 instagram_url: "https://www.instagram.com/kokopelli_plant_medicine?utm_source=qr&igsh=ZWlkM2drcGtvOTVm"
 # etsy_url: "https://etsy.com/shop/YourShop"
 
-# products as a collection (no plugins)
+# Collections
 collections:
   products:
     output: true
     permalink: /products/:name/
+  category:
+    output: true
+    permalink: /category/:name/
+    sort_by: "order"
 
+# Defaults
 defaults:
   - scope:
       path: ""
       type: "products"
     values:
       layout: product
-
-  # default for standalone root-level pages (like about.md)
   - scope:
       path: ""
-      type: "pages"
+      type: "category"
     values:
-      layout: default
+      layout: category
 
-# build includes
+# Build includes/excludes
 exclude:
   - README.md
-  - assets/css/
   - node_modules/
   - package.json
   - package-lock.json
@@ -54,7 +56,5 @@ exclude:
   - assets/
 
 # Preserve files/folders in the destination directory when Jekyll cleans it
-# This prevents our Gulp-written assets from being deleted on each rebuild
-
 keep_files:
   - assets

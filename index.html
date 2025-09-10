@@ -2,6 +2,8 @@
 layout: default
 title: Home
 ---
+{% assign categories = site.products | map: "category" | compact | uniq | sort %}
+{% assign cat_map = site.data.categories %}
 
 <header class="hero">
   <!-- Hero carousel -->
@@ -9,52 +11,36 @@ title: Home
   <div class="break"></div>
   <div class="hero-carousel" aria-roledescription="carousel" role="region" aria-label="Featured products carousel">
     <div class="slides" id="heroSlides">
-      <!-- Slide backgrounds built from products -->
-      {% assign items = site.products | sort: 'order' %}
-      {% for p in items %}
-        {% unless p.path contains "/_" %}
-          <a class="slide" href="{{ p.url | relative_url }}" data-src="{{ "/assets/images/" | append: p.image | relative_url | default: '/assets/og-placeholder.jpg' }}" data-title="{{ p.title | escape }}" data-desc="{{ p.excerpt | default: p.short | default: p.description | strip_html | strip_newlines | escape }}" aria-hidden="true" aria-label="{{ p.title }} - {{ p.excerpt | default: p.short | default: p.description | strip_html | strip_newlines }}">
-            <div class="slide-caption">
-              <h2 class="slide-title">{{ p.title }}</h2>
-              <p class="slide-sub">{{ p.excerpt | default: p.short | default: p.description | strip_html }}</p>
-            </div>
-          </a>
-        {% endunless %}
+
+      {%- assign cats = site.category | sort: 'order' -%}
+      {%- for cat in cats -%}
+      <a class="slide" data-src="{{ "/assets/images/" | append: cat.image | relative_url }}"
+        href="{{ "/category/" | append: cat.slug | relative_url }}" aria-hidden="true">
+        <div class="slide-caption">
+          <h2 class="slide-title">{{ cat.display | default: cat.title }}</h2>
+          <p class="slide-sub">{{ cat.description | default: "" | strip_html }}</p>
+        </div>
+      </a>
       {% endfor %}
     </div>
-    <button class="carousel-control prev" aria-label="Previous slide">‹</button>
-    <button class="carousel-control next" aria-label="Next slide">›</button>
-    <div class="carousel-dots" id="heroDots" role="tablist"></div>
-  </div>
-  <h2>Browse Blends</h2>
-  <!-- Centered title card over the carousel -->
-  <!-- <div class="hero-card" role="region" aria-label="Hero">
-    <h1 class="hero-title">{{ site.title | default: "Kokopelli" }}</h1>
-    <p class="hero-sub">Browse blends &amp; oils — click a product to read details; message to purchase.</p>
-
-    <div class="filters">
-      <input id="q" type="search" placeholder="Search…" aria-label="Search" />
-      <div class="chips">
-        <button class="chip is-active" data-cat="all">All</button>
-        <button class="chip" data-cat="rape">Rapé</button>
-        <button class="chip" data-cat="extras">Extras</button>
-      </div>
+    <div class="carousel-controls">
+      <button class="carousel-control prev" aria-label="Previous slide">‹</button>
+      <button class="carousel-control next" aria-label="Next slide">›</button>
+      <div class="carousel-dots" id="heroDots" role="tablist"></div>
     </div>
-  </div> -->
+  </div>
 </header>
 
 <div class="break"></div>
 
-<section class="stack" id="list" aria-live="polite">
-
-</section>
+<section class="stack" id="list" aria-live="polite"></section>
 
 {%- comment -%} Append About page content at the bottom {%- endcomment -%}
 {%- assign about_page = site.pages | where: "permalink", "/about/" | first -%}
 {%- if about_page -%}
-  <section id="about-home">
-    {{ about_page.content }}
-  </section>
+<section id="about-home">
+  {{ about_page.content }}
+</section>
 {%- endif -%}
 
-<script src="{{ '/assets/index.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/index.js' | relative_url }}" defer />
