@@ -38,6 +38,7 @@ defaults:
 # Build includes/excludes
 exclude:
   - README.md
+  - assets/css/
   - node_modules/
   - package.json
   - package-lock.json
