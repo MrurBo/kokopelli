@@ -1,0 +1,1 @@
+npx gulp clean && npx gulp build
